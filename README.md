@@ -1,5 +1,6 @@
-Project title : Pizzeria A & P
-This is a presentation web page for a pizza restaurant. 
+Project title : Pizzeria A & P             
+
+This is a presentation web page for a pizza restaurant. I used HTML, CSS, Bootstrap and JavaScript.
 I used Visual Studio Code and I worked on Live Server. You have to download all files and "Go live" from Studio Code for the site to work properly.
 The first page is home.html and you can start from there.
 The search bar is working only in "Meniu pizza" page and the search starts after you enter the first 3 letters of the word.
