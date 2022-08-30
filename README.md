@@ -8,6 +8,6 @@ The "Cos" page is initially empty and after you add a pizza other fields will ap
 In "Admin" you can log in with an email that has to contain "@" and the passord is predefined in code (adina07). From "Admin" section you can add new pizza`s and after you click "Adauga" the pizza will appear in "Meniu pizza" and can be added in the basket to order it.
 There is a predefined pizza list and from "Admin" section you can reset the list to initial if you click on "Reseteaza la initial" button. By clicking that button all new pizza added will be deleted.
 
-I am looking to add buttons to delete the pizza`s from basket if the customer changes his mind and maybe adding buttons to choose the size of the pizza (small, medium, large).
+I am looking to add buttons to delete the pizza`s from basket if the customer changes his mind, maybe adding buttons to choose the size of the pizza (small, medium, large) and a field for comments on each pizza if someone will want to remove/change the ingredients of the pizza.
 
 Enjoy !
