@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pizzeria A&P - Admin - Autentificare</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="admin_page1.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="login-page">
+
+            <h1 class="login-header">&#127829 Pizzeria A & P &#127829</h1>
+            <h2 class="login-header-2">Bine ai venit !</h2>
+            <form action="login">
+
+                <div class="userEmail">
+                    <label for="email">E-mail :</label>
+                    <input type="text" placeholder="ex.: popescu.mariana@gmail.com" id="email" name="email" required>
+                </div>
+                <div class="userPassword">
+                    <label for="password">Parola :</label>
+                    <input type="password" placeholder="xxxxxxx" id="password" name="password" required>
+                </div>
+            </form>
+            <a href="admin_page2.html" class="signin-button" type="submit" id="submit-button"
+                onclick="validate(email)">Autentificare</a>
+            <a href="#">Ti-ai uitat parola?</a>
+
+        </div>
+    </div>
+
+    <script>
+        //validare email si parola
+        function validate(event) {
+            let password = document.getElementById('password').value;
+            if (password != "adina07") {
+                alert("Utilizator si/sau Parola sunt gresite!");
+                document.getElementById("submit-button").href = "admin_page1.html";
+            }
+
+            let email = document.getElementById('email').value;
+            if (email.includes('@')) {
+                console.log(email);
+            }
+            else {
+                document.getElementById("submit-button").href = "admin_page1.html";
+            }
+        }
+
+    </script>
+</body>
+
+</html>

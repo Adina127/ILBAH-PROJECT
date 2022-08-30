@@ -1,0 +1,119 @@
+body {
+    font-family: 'Amatic SC', cursive;
+    background-color: #ffb4a2;
+
+}
+
+.underline {
+    /* color: #ffb4a2; */
+    position: relative;
+    text-decoration: none;
+}
+
+.underline::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background-color: #ffb4a2;
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .3s ease-in-out;
+}
+
+.underline:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+header,
+p {
+    font-size: 30px;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.pizza_logo {
+    height: 80px;
+    width: 120px;
+}
+
+.search_bar {
+    width: 250px;
+}
+
+.antet {
+
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about {
+    font-size: 100px;
+}
+
+.album {
+    background-color: #ffb4a2;
+}
+
+.desert {
+    margin-top: 77px;
+}
+
+p.ingredients {
+    font-size: 25px;
+    min-height: 230px;
+    max-height: 230px;
+
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.text-muted {
+
+    color: white !important;
+}
+
+.app-footer,
+.app-footer .nav-link {
+
+    background-color: black;
+    color: white;
+}
+
+.bd-placeholder-img.card-img-top {
+    min-height: 225px;
+    max-height: 225px;
+}
+
+
+@media (max-width: 768px) {
+
+    .pizza-name,
+    .pizza-price,
+    .ingredients {
+        font-size: 20px;
+    }
+}
+
+
+@media (max-width: 1024px) {
+    p.ingredients {
+        overflow-y: scroll;
+    }
+}

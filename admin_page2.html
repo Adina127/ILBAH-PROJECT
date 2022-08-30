@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pizzeria A&P - Admin - Adaugare pizza</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="admin_page2.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="login-page">
+
+            <h1 class="login-header">&#127829 Pizzeria A & P &#127829</h1>
+            <h2 class="login-header-2">Adauga o pizza noua</h2>
+            <form action="login" class="d-flex" onsubmit="addNewPizza(event)">
+
+                <div class="pizza-name">
+                    <label for="pizza-name">Denumire pizza :</label>
+                    <input type="text" id="pizza-name" name="pizza-name" required>
+                </div>
+
+                <div class="pizza-price">
+                    <label for="pizza-price">Pret :</label>
+                    <input type="number" id="pizza-price" name="pizza-price" required>
+                </div>
+
+
+                <div class="pizza-weight">
+                    <label for="pizza-weight">Greutate :</label>
+                    <input type="number" id="pizza-weight" name="pizza-weight" required>
+                </div>
+
+
+
+                <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)"
+                    style="display: none;">
+                <label for="file" style="cursor: pointer;">Click aici pentru a adauga poza</label>
+                <div class="d-flex justify-content-center img-output">
+                    <img id="output" width="300" height="200" />
+                </div>
+
+                <div class="pizza-ingredients">
+                    <label for="pizza-ingredients">Ingrediente :</label>
+                    <textarea type="text" id="pizza-ingredients" name="pizza-ingredients" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-outline-primary add-pizza-btn">Adauga</button>
+            </form>
+
+            <button type="button" class="btn btn-outline-primary add-pizza-btn-reset"
+                onclick="resetPizzaList()">Reseteaza la
+                initial</button>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        //se incarca poza
+        var loadFile = function (event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+
+        //adaugare pizza noua
+        function addNewPizza(event) {
+            //numele pizzei
+            let name = event.target.elements[0].value;
+
+            //path-ul imaginii se ia dupa ce valoarea a fost despartita de \\-al treilea element din lista
+            let imagePaths = event.target.elements[3].value.split("\\");
+
+
+            //se construieste un nou obiect pizza
+            let newPizza = {
+                name: name,
+                image: imagePaths[imagePaths.length - 1],
+                price: event.target.elements[1].value,
+                description: event.target.elements[4].value,
+                weight: event.target.elements[2].value,
+                id: name.toLowerCase().replaceAll(" ", "-")
+            };
+
+            //se introduce noua pizza in lista
+            let pizzaList = JSON.parse(localStorage.getItem("pizzaList"));
+            pizzaList.push(newPizza);
+            localStorage.setItem("pizzaList", JSON.stringify(pizzaList));
+
+            event.preventDefault();
+
+            window.location.href = "pizza_menu.html";
+        };
+
+        //resetare lista de pizza la initial
+        function resetPizzaList() {
+            let initialPizzaList = [
+                {
+                    name: 'PIZZA PAUL',
+                    image: 'pizza1.jpg',
+                    price: 23,
+                    description: 'Blat subtire si crocant facut in casa, sos de rosii reteta proprie, mozarella, sunca si ciuperci de la producatori locali, ardei si rosii din propria gradina',
+                    weight: 350,
+                    button: 'pizza-button-paul',
+                    id: 'pizza-paul'
+                },
+                {
+                    name: 'PIZZA CANIBALE',
+                    image: 'pizza2.jpg',
+                    price: 25,
+                    description: 'Blat subtire si crocant facut in casa, sos de rosii reteta proprie, mozarella, sunca, salam si carnaciori de la producatori locali, rosii din propria gradina',
+                    weight: 380,
+                    button: 'pizza-button-canibale',
+                    id: 'pizza-canibale'
+                },
+                {
+                    name: 'PIZZA MIC DEJUN',
+                    image: 'pizza6.jpg',
+                    price: 22,
+                    description: 'Blat subtire si crocant facut in casa, sos de rosii reteta proprie, mozarella, salam, porumb, ou si ciuperci de la producatori locali, rosii din propria gradina',
+                    weight: 350,
+                    button: 'pizza-button-breakfast',
+                    id: 'pizza-breakfast'
+                },
+                {
+                    name: 'PIZZA PRIMAVERA',
+                    image: 'pizza4.jpg',
+                    price: 23,
+                    description: 'Blat subtire si crocant facut in casa, sos de rosii reteta proprie, mozarella, sunca, ciuperci si porumb de la producatori locali, ardei si ceapa din propria gradina',
+                    weight: 350,
+                    button: 'pizza-button-primavera',
+                    id: 'pizza-primavera'
+                },
+                {
+                    name: 'PIZZA VEGETARIANA',
+                    image: 'pizza5.jpg',
+                    price: 21,
+                    description: 'Blat subtire si crocant facut in casa, sos de rosii reteta proprie, mozarella si ciuperci de la producatori locali, ardei, spanac si rosii din propria gradina',
+                    weight: 320,
+                    button: 'pizza-button-veggie',
+                    id: 'pizza-veggie'
+                },
+                {
+                    name: 'PIZZA DESERT',
+                    image: 'pizza3.jpg',
+                    price: 20,
+                    description: 'Blat subtire si crocant facut in casa, nutella, banane si capsuni',
+                    weight: 310,
+                    button: 'pizza-button-desert',
+                    id: 'pizza-desert'
+                },
+            ];
+
+            localStorage.setItem("pizzaList", JSON.stringify(initialPizzaList));
+
+            window.location.href = "pizza_menu.html";
+        };
+    </script>
+
+</body>
+
+</html>
